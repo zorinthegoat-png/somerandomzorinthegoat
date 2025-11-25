@@ -526,7 +526,7 @@ function App() {
                      ))}
                  </nav>
 
-                 <div className="hidden md:flex flex-col gap-4 w-full mt-auto pt-6 border-t border-slate-100 dark:border-slate-800">
+                 <div className="hidden lg:flex flex-col gap-4 w-full mt-auto pt-6 border-t border-slate-100 dark:border-slate-800">
                      <div className="flex flex-col gap-2 p-4 bg-slate-50 dark:bg-slate-900 rounded-2xl">
                          <span className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1 text-slate-500">{t.settings.title}</span>
                          
@@ -554,7 +554,7 @@ function App() {
                 }}></div>
                 
                 {/* Mobile Header */}
-                <div className="md:hidden flex justify-between items-center p-4 sticky top-0 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-100 dark:border-slate-800">
+                <div className="lg:hidden flex justify-between items-center p-4 sticky top-0 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-100 dark:border-slate-800">
                      <div className="font-bold text-lg flex items-center gap-2 text-slate-900 dark:text-white">
                          <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white text-xs">UZ</div>
                          School 169
@@ -580,4 +580,3 @@ function App() {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
-
