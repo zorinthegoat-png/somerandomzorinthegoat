@@ -8,7 +8,7 @@ body {
     background-color: #f8fafc;
 }
 
-/* --- Custom Scrollbar (Desktop) --- */
+/* --- Custom Scrollbar --- */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -54,7 +54,7 @@ body {
     transform: scale(0.98);
 }
 
-/* Entry Animation */
+/* Page Entry Animation */
 @keyframes subtleFade {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
@@ -63,3 +63,11 @@ body {
     animation: subtleFade 0.4s ease-out forwards;
 }
 
+/* Popup Modal Animation */
+@keyframes modalPop {
+    from { opacity: 0; transform: scale(0.95) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.animate-pop {
+    animation: modalPop 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
