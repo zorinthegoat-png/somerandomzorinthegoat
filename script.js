@@ -31,7 +31,8 @@ const Icons = {
     AlertTriangle: (p) => <IconBase {...p}><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></IconBase>,
     Database: (p) => <IconBase {...p}><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></IconBase>,
     Zap: (p) => <IconBase {...p}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></IconBase>,
-    Layers: (p) => <IconBase {...p}><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></IconBase>
+    Layers: (p) => <IconBase {...p}><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></IconBase>,
+    X: (p) => <IconBase {...p}><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></IconBase>
 };
 
 // --- DATA ---
@@ -104,7 +105,15 @@ const TRANSLATIONS = {
             break_label: "Перемена 5 мин",
             no_lessons: "Уроков нет, отдыхайте!",
             info_shift: "2-я Смена (с 13:00)",
-            info_loc: "Ориентир: Махалля Хувайдо"
+            info_loc: "Ориентир: Махалля Хувайдо",
+            modal: {
+                time_label: "Время урока",
+                about_label: "О предмете",
+                teacher_label: "Учитель",
+                room_label: "Кабинет",
+                btn_close: "Закрыть",
+                default_desc: "Важный школьный предмет, направленный на всестороннее развитие ученика."
+            }
         },
         history: {
             title: "Хронология Веков",
@@ -135,6 +144,23 @@ const TRANSLATIONS = {
             theme: "Тема оформления",
             lang: "Язык интерфейса",
             credit: "Создано: МухаммадМусо"
+        },
+        // Descriptions for subject lookup
+        descriptions: {
+            "Математика": "Наука о числах, величинах и геометрических фигурах. Развивает логическое мышление.",
+            "Русский язык": "Изучение грамматики, орфографии и культуры речи русского языка.",
+            "Естествознание": "Основы знаний о природе, физических явлениях и окружающем мире.",
+            "Английский язык": "Изучение международного языка общения, грамматики и словарного запаса.",
+            "Классный час": "Организационное время для обсуждения важных вопросов класса и воспитательной работы.",
+            "Музыка": "Развитие музыкального слуха, изучение истории музыки и пение.",
+            "Воспитание": "Урок, направленный на формирование этических норм и патриотизма.",
+            "История": "Изучение прошлого человечества, важных дат и событий Узбекистана и мира.",
+            "Литература": "Чтение и анализ произведений великих писателей и поэтов.",
+            "Физкультура": "Физическое развитие, спорт и укрепление здоровья.",
+            "ИЗО": "Уроки рисования, развитие творческих способностей и воображения.",
+            "Узбекский язык": "Изучение государственного языка Республики Узбекистан.",
+            "Информатика": "Основы работы с компьютером, программирование и цифровая грамотность.",
+            "Технология": "Приобретение практических навыков, рукоделие и труд."
         }
     },
     uz: {
@@ -155,7 +181,15 @@ const TRANSLATIONS = {
             break_label: "Tanaffus 5 daqiqa",
             no_lessons: "Darslar yo'q, dam oling!",
             info_shift: "2-smena (13:00 dan)",
-            info_loc: "Mo'ljal: Huvaydo mahallasi"
+            info_loc: "Mo'ljal: Huvaydo mahallasi",
+            modal: {
+                time_label: "Dars vaqti",
+                about_label: "Fan haqida",
+                teacher_label: "O'qituvchi",
+                room_label: "Xona",
+                btn_close: "Yopish",
+                default_desc: "O'quvchining har tomonlama rivojlanishiga qaratilgan muhim maktab fani."
+            }
         },
         history: {
             title: "Asrlar Xronologiyasi",
@@ -186,8 +220,40 @@ const TRANSLATIONS = {
             theme: "Mavzu",
             lang: "Til",
             credit: "Yaratuvchi: MuhammadMuso"
+        },
+        // Descriptions for subject lookup
+        descriptions: {
+            "Matematika": "Sonlar, miqdorlar va geometrik shakllar haqidagi fan. Mantiqiy fikrlashni rivojlantiradi.",
+            "Rus tili": "Rus tilining grammatikasi, imlosi va nutq madaniyatini o'rganish.",
+            "Tabiiy fanlar": "Tabiat, fizik hodisalar va atrof-muhit haqidagi asosiy bilimlar.",
+            "Ingliz tili": "Xalqaro muloqot tili, grammatika va lug'at boyligini o'rganish.",
+            "Sinf soati": "Sinfning muhim masalalarini muhokama qilish va tarbiyaviy ishlar uchun tashkiliy vaqt.",
+            "Musiqa": "Musiqiy eshitish qobiliyatini rivojlantirish, musiqa tarixi va qo'shiq aytish.",
+            "Tarbiya": "Odob-axloq qoidalari va vatanparvarlikni shakllantirishga qaratilgan dars.",
+            "Tarix": "Insoniyat o'tmishi, O'zbekiston va jahonning muhim sanalari va voqealarini o'rganish.",
+            "Adabiyot": "Buyuk yozuvchi va shoirlarning asarlarini o'qish va tahlil qilish.",
+            "Jismoniy tarbiya": "Jismoniy rivojlanish, sport va salomatlikni mustahkamlash.",
+            "Tasviriy san'at": "Rasm chizish darslari, ijodiy qobiliyat va tasavvurni rivojlantirish.",
+            "O'zbek tili": "O'zbekiston Respublikasining davlat tilini o'rganish.",
+            "Informatika": "Kompyuterda ishlash asoslari, dasturlash va raqamli savodxonlik.",
+            "Texnologiya": "Amaliy ko'nikmalar, hunarmandchilik va mehnatni o'rganish."
         }
     }
+};
+
+// --- HELPER FUNCTIONS ---
+
+const getLessonInfo = (subjectName, lang) => {
+    // Find description based on exact match or fallback
+    const t = TRANSLATIONS[lang];
+    const desc = t.descriptions[subjectName] || t.school.modal.default_desc;
+    
+    // Simulate generic room/teacher data since we don't have a real DB
+    return {
+        description: desc,
+        teacher: "Noma'lum O'qituvchi", // Default
+        room: "Kabinet 6-D" // Default
+    };
 };
 
 // --- COMPONENTS ---
@@ -233,7 +299,84 @@ function HeroSection({ t, setActiveTab }) {
     );
 }
 
-function SchoolSection({ t, currentDay, setCurrentDay, isUz }) {
+function LessonModal({ isOpen, onClose, data, t, lang }) {
+    if (!isOpen || !data) return null;
+    
+    const details = getLessonInfo(data.name, lang);
+    const Icon = data.icon;
+    
+    // Close on click outside
+    const handleBackdropClick = (e) => {
+        if (e.target === e.currentTarget) onClose();
+    };
+
+    return (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 animate-enter" onClick={handleBackdropClick}>
+            <div className="bg-white dark:bg-slate-900 w-full max-w-md rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden animate-pop relative">
+                {/* Header */}
+                <div className={`p-6 ${data.color.split(' ')[1]} flex items-start justify-between`}>
+                    <div className="flex items-center gap-4">
+                        <div className={`p-3 bg-white/20 backdrop-blur-md rounded-xl text-slate-900 dark:text-white`}>
+                            <Icon size={32} />
+                        </div>
+                        <div>
+                            <h3 className="text-2xl font-bold text-slate-900 dark:text-white">{data.name}</h3>
+                            <span className="text-sm font-mono opacity-70 dark:text-slate-200">{t.school.subject_label} #{data.index + 1}</span>
+                        </div>
+                    </div>
+                    <button onClick={onClose} className="p-2 hover:bg-black/10 rounded-full transition-colors">
+                        <Icons.X size={20} />
+                    </button>
+                </div>
+                
+                {/* Body */}
+                <div className="p-6 space-y-6">
+                    {/* Time */}
+                    <div className="flex items-center gap-4 p-4 bg-slate-50 dark:bg-slate-800 rounded-2xl">
+                        <div className="p-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 rounded-lg">
+                            <Icons.Clock size={20} />
+                        </div>
+                        <div>
+                            <span className="text-xs uppercase text-slate-400 font-bold">{t.school.modal.time_label}</span>
+                            <div className="font-mono font-bold text-lg text-slate-800 dark:text-slate-100">
+                                {data.timing.start} - {data.timing.end}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {/* Description */}
+                    <div>
+                        <h4 className="font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+                            <Icons.BookOpen size={16} className="text-blue-500"/> {t.school.modal.about_label}
+                        </h4>
+                        <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                            {details.description}
+                        </p>
+                    </div>
+
+                    {/* Meta info (Teacher/Room) - Generic placeholders */}
+                    <div className="grid grid-cols-2 gap-4">
+                        <div className="p-3 border border-slate-100 dark:border-slate-800 rounded-xl">
+                            <span className="text-xs text-slate-400 block mb-1">{t.school.modal.teacher_label}</span>
+                            <span className="font-medium text-slate-700 dark:text-slate-300">Ustoz (6-D)</span>
+                        </div>
+                        <div className="p-3 border border-slate-100 dark:border-slate-800 rounded-xl">
+                            <span className="text-xs text-slate-400 block mb-1">{t.school.modal.room_label}</span>
+                            <span className="font-medium text-slate-700 dark:text-slate-300">Maktab 169</span>
+                        </div>
+                    </div>
+
+                    <button onClick={onClose} className="w-full py-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold rounded-xl transition-colors">
+                        {t.school.modal.btn_close}
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function SchoolSection({ t, currentDay, setCurrentDay, isUz, lang }) {
+    const [selectedLesson, setSelectedLesson] = useState(null);
     const daySchedule = SCHEDULE_DATA[currentDay] || {};
     const lessons = isUz ? (daySchedule.uz || []) : (daySchedule.ru || []);
     const icons = daySchedule.icons || [];
@@ -241,6 +384,15 @@ function SchoolSection({ t, currentDay, setCurrentDay, isUz }) {
 
     return (
         <div className="max-w-5xl mx-auto p-4 md:p-8 animate-enter">
+            {/* Modal Injection */}
+            <LessonModal 
+                isOpen={!!selectedLesson} 
+                onClose={() => setSelectedLesson(null)} 
+                data={selectedLesson}
+                t={t}
+                lang={lang}
+            />
+
             <div className="mb-10 text-center">
                 <div className="inline-block p-4 bg-blue-100 dark:bg-blue-900/30 rounded-3xl mb-4 text-blue-600 dark:text-blue-400">
                     <Icons.GraduationCap size={48} />
@@ -298,7 +450,16 @@ function SchoolSection({ t, currentDay, setCurrentDay, isUz }) {
                                                     <span className="text-[10px] text-slate-300 dark:text-slate-600 px-2 font-mono whitespace-nowrap">{t.school.break_label}</span>
                                                 </div>
                                             )}
-                                            <div className="flex items-stretch gap-4 p-2 rounded-xl hover:bg-white/50 dark:hover:bg-slate-700/50 transition-colors">
+                                            <div 
+                                                onClick={() => setSelectedLesson({
+                                                    name: lesson,
+                                                    timing: timing,
+                                                    icon: Icon,
+                                                    color: colorClass,
+                                                    index: idx
+                                                })}
+                                                className="flex cursor-pointer items-stretch gap-4 p-2 rounded-xl hover:bg-white/50 dark:hover:bg-slate-700/50 hover:scale-[1.01] hover:shadow-md transition-all duration-200"
+                                            >
                                                 <div className="w-20 flex flex-col justify-center items-end pr-4 border-r-2 border-blue-100 dark:border-blue-900/50">
                                                     <span className="font-mono font-bold text-slate-900 dark:text-slate-100">{timing.start}</span>
                                                     <span className="font-mono text-xs text-slate-400">{timing.end}</span>
@@ -311,6 +472,9 @@ function SchoolSection({ t, currentDay, setCurrentDay, isUz }) {
                                                         <h4 className="font-bold text-lg leading-tight text-slate-800 dark:text-slate-200">{lesson}</h4>
                                                         <span className="text-xs text-slate-400 uppercase tracking-wider">{t.school.subject_label} #{idx + 1}</span>
                                                     </div>
+                                                </div>
+                                                <div className="flex items-center text-slate-300 dark:text-slate-600 pr-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                    <Icons.ChevronRight size={20} />
                                                 </div>
                                             </div>
                                         </div>
@@ -569,7 +733,8 @@ function App() {
 
                 <div className="min-h-full">
                     {activeTab === 'home' && <HeroSection t={t} setActiveTab={setActiveTab} />}
-                    {activeTab === 'school' && <SchoolSection t={t} currentDay={currentDay} setCurrentDay={setCurrentDay} isUz={isUz} />}
+                    {/* Pass lang to SchoolSection so the modal knows which language to pick */}
+                    {activeTab === 'school' && <SchoolSection t={t} currentDay={currentDay} setCurrentDay={setCurrentDay} isUz={isUz} lang={lang} />}
                     {activeTab === 'history' && <HistorySection t={t} />}
                     {activeTab === 'info' && <InfoSection t={t} />}
                 </div>
