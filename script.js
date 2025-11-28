@@ -262,17 +262,19 @@ const getLessonInfo = (subjectName, lang) => {
 };
 
 // --- STATS LOGIC ---
-const NAMESPACE = "uzbproject_school169_v1";
+const NAMESPACE = "school169_muso_stats"; // Unique namespace for your project
 
 const getTodayKey = () => {
     // Returns date string like "2023-11-28" in Uzbekistan timezone
-    return new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Tashkent' });
+    const now = new Date();
+    // Use ISO string slice for YYYY-MM-DD to avoid timezone complexity in free APIs
+    return now.toISOString().split('T')[0];
 }
 
 const getYesterdayKey = () => {
     const date = new Date();
     date.setDate(date.getDate() - 1);
-    return date.toLocaleDateString('en-CA', { timeZone: 'Asia/Tashkent' });
+    return date.toISOString().split('T')[0];
 }
 
 // --- COMPONENTS ---
@@ -285,28 +287,31 @@ function StatsModal({ isOpen, onClose }) {
     useEffect(() => {
         const fetchStats = async () => {
             try {
+                // Using kounter.vercel.app which mimics countapi.xyz
+                // Endpoints: /get/namespace/key (to read without incrementing)
+                
                 // Fetch Total
-                const totalReq = await fetch(`https://api.counterapi.dev/v1/${NAMESPACE}/visits_total`);
+                const totalReq = await fetch(`https://kounter.vercel.app/get/${NAMESPACE}/total`);
                 const totalData = await totalReq.json();
                 
                 // Fetch Today
                 const todayKey = `visits_${getTodayKey()}`;
-                const todayReq = await fetch(`https://api.counterapi.dev/v1/${NAMESPACE}/${todayKey}`);
+                const todayReq = await fetch(`https://kounter.vercel.app/get/${NAMESPACE}/${todayKey}`);
                 const todayData = await todayReq.json();
                 
                 // Fetch Yesterday
                 const yestKey = `visits_${getYesterdayKey()}`;
-                const yestReq = await fetch(`https://api.counterapi.dev/v1/${NAMESPACE}/${yestKey}`);
+                const yestReq = await fetch(`https://kounter.vercel.app/get/${NAMESPACE}/${yestKey}`);
                 const yestData = await yestReq.json();
 
                 setStats({
-                    total: totalData.count || 0,
-                    today: todayData.count || 0,
-                    yesterday: yestData.count || 0
+                    total: totalData.count || totalData.value || 0,
+                    today: todayData.count || todayData.value || 0,
+                    yesterday: yestData.count || yestData.value || 0
                 });
             } catch (e) {
                 console.error("Stats fetch error:", e);
-                // If keys don't exist yet, they might 404, default to 0
+                // Default to 0 if API is down or keys don't exist yet
                 setStats({ total: 0, today: 0, yesterday: 0 });
             } finally {
                 setLoading(false);
@@ -736,16 +741,20 @@ function App() {
     useEffect(() => {
         const countVisit = async () => {
             try {
-                // Increment Total
-                await fetch(`https://api.counterapi.dev/v1/${NAMESPACE}/visits_total/up`);
-                // Increment Today
+                // Use kounter.vercel.app for "hit" (increment)
+                // 1. Increment Total
+                await fetch(`https://kounter.vercel.app/hit/${NAMESPACE}/total`);
+                
+                // 2. Increment Today
                 const todayKey = `visits_${getTodayKey()}`;
-                await fetch(`https://api.counterapi.dev/v1/${NAMESPACE}/${todayKey}/up`);
+                await fetch(`https://kounter.vercel.app/hit/${NAMESPACE}/${todayKey}`);
             } catch (e) {
                 console.error("Counter API failed", e);
             }
         };
-        // Simple duplicate check could go here, but per request we count "entries"
+        
+        // Simple duplicate check could go here if you use localStorage, 
+        // but to "see how many people entered", we count every load.
         countVisit();
     }, []);
 
