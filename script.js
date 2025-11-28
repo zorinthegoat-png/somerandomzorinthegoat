@@ -32,10 +32,10 @@ const Icons = {
     Database: (p) => <IconBase {...p}><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></IconBase>,
     Zap: (p) => <IconBase {...p}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></IconBase>,
     Layers: (p) => <IconBase {...p}><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></IconBase>,
-    X: (p) => <IconBase {...p}><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></IconBase>
+    X: (p) => <IconBase {...p}><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></IconBase>,
+    BarChart: (p) => <IconBase {...p}><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></IconBase>,
+    Lock: (p) => <IconBase {...p}><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></IconBase>
 };
-
-// --- DATA ---
 
 const TIMINGS = [
     { start: "13:00", end: "13:45" },
@@ -90,8 +90,11 @@ const TRANSLATIONS = {
     ru: {
         days: ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"],
         nav: { home: "Главная", school: "Школа 169", history: "История", geo: "О Стране", settings: "Настройки" },
+        common: { made_by: "Сделано: MuhammadMuso" },
         hero: { 
             label: "РЕСПУБЛИКА УЗБЕКИСТАН", 
+            main_title: "УЗБЕКИСТАН",
+            sub_title: "& ШКОЛА №169",
             title: "Земля Великого Наследия", 
             sub: "Ташкент • Школа №169 • 6-Д Класс",
             btn_school: "Открыть Дневник",
@@ -109,8 +112,6 @@ const TRANSLATIONS = {
             modal: {
                 time_label: "Время урока",
                 about_label: "О предмете",
-                teacher_label: "Учитель",
-                room_label: "Кабинет",
                 btn_close: "Закрыть",
                 default_desc: "Важный школьный предмет, направленный на всестороннее развитие ученика."
             }
@@ -122,7 +123,7 @@ const TRANSLATIONS = {
                 { date: "329 г. до н.э.", event: "Поход Александра", desc: "Македонская армия завоевывает Мараканду." },
                 { date: "VIII-IX вв.", event: "Исламский Ренессанс", desc: "Расцвет науки: Аль-Хорезми, Беруни, Ибн Сина." },
                 { date: "1336-1405 гг.", event: "Эпоха Амира Тимура", desc: "Создание великой империи со столицей в Самарканде." },
-                { date: "1991 г.", event: "Независимость", desc: "31 августа объявлено Днем Независимости Республики." }
+                { date: "1991 г.", event: "Независимость", desc: "1-сентября объявлено Днем Независимости Республики." }
             ]
         },
         info: {
@@ -133,6 +134,12 @@ const TRANSLATIONS = {
                 { label: "Столица", val: "Ташкент" },
                 { label: "Валюта", val: "Сум (UZS)" }
             ],
+            header_gold: "Золото и Ресурсы",
+            header_cotton: "Хлопок и Текстиль",
+            header_food: "Культура и Еда",
+            header_pc: "Плюсы и Минусы",
+            label_pros: "Плюсы",
+            label_cons: "Минусы",
             text_gold: "Узбекистан занимает 4-е место в мире по запасам золота.",
             text_cotton: "Страна является одним из крупнейших экспортеров хлопка и текстиля.",
             text_food: "Узбекская кухня (Плов) внесена в список наследия ЮНЕСКО.",
@@ -143,9 +150,8 @@ const TRANSLATIONS = {
             title: "Настройки Портала",
             theme: "Тема оформления",
             lang: "Язык интерфейса",
-            credit: "Создано: МухаммадМусо"
+            admin_btn: "Статистика (Админ)"
         },
-        // Descriptions for subject lookup
         descriptions: {
             "Математика": "Наука о числах, величинах и геометрических фигурах. Развивает логическое мышление.",
             "Русский язык": "Изучение грамматики, орфографии и культуры речи русского языка.",
@@ -166,8 +172,11 @@ const TRANSLATIONS = {
     uz: {
         days: ["Dushanba", "Seshanba", "Chorshanba", "Payshanba", "Juma", "Shanba"],
         nav: { home: "Bosh Sahifa", school: "169-Maktab", history: "Tarix", geo: "Mamlakat", settings: "Sozlamalar" },
+        common: { made_by: "Yaratuvchi: MuhammadMuso" },
         hero: { 
             label: "O'ZBEKISTON RESPUBLIKASI", 
+            main_title: "O'ZBEKISTON",
+            sub_title: "& 169-MAKTAB",
             title: "Buyuk Meros Yurti", 
             sub: "Toshkent • 169-Maktab • 6-D Sinf",
             btn_school: "Kundalikni Ochish",
@@ -185,8 +194,6 @@ const TRANSLATIONS = {
             modal: {
                 time_label: "Dars vaqti",
                 about_label: "Fan haqida",
-                teacher_label: "O'qituvchi",
-                room_label: "Xona",
                 btn_close: "Yopish",
                 default_desc: "O'quvchining har tomonlama rivojlanishiga qaratilgan muhim maktab fani."
             }
@@ -198,7 +205,7 @@ const TRANSLATIONS = {
                 { date: "M.a. 329 yil", event: "Aleksandr Yurishi", desc: "Makedoniya armiyasi Marokandni zabt etdi." },
                 { date: "VIII-IX asrlar", event: "Islom Renessansi", desc: "Ilm-fan rivoji: Al-Xorazmiy, Beruniy, Ibn Sino." },
                 { date: "1336-1405 yy.", event: "Amir Temur Davri", desc: "Samarqandda poytaxti bo'lgan buyuk imperiyaning yaratilishi." },
-                { date: "1991 yil", event: "Mustaqillik", desc: "31-avgust Respublika Mustaqillik kuni deb e'lon qilindi." }
+                { date: "1991 yil", event: "Mustaqillik", desc: "1-sentabr Respublika Mustaqillik kuni deb e'lon qilindi." }
             ]
         },
         info: {
@@ -209,6 +216,12 @@ const TRANSLATIONS = {
                 { label: "Poytaxt", val: "Toshkent" },
                 { label: "Valyuta", val: "So'm (UZS)" }
             ],
+            header_gold: "Oltin va Resurslar",
+            header_cotton: "Paxta va To'qimachilik",
+            header_food: "Madaniyat va Taomlar",
+            header_pc: "Afzallik va Kamchiliklar",
+            label_pros: "Afzalliklar",
+            label_cons: "Kamchiliklar",
             text_gold: "O'zbekiston oltin zaxiralari bo'yicha dunyoda 4-o'rinni egallaydi.",
             text_cotton: "Mamlakat paxta va to'qimachilik mahsulotlarining yirik eksportchisi.",
             text_food: "O'zbek oshxonasi (Palov) YuNESKO merosi ro'yxatiga kiritilgan.",
@@ -219,9 +232,8 @@ const TRANSLATIONS = {
             title: "Portal Sozlamalari",
             theme: "Mavzu",
             lang: "Til",
-            credit: "Yaratuvchi: MuhammadMuso"
+            admin_btn: "Statistika (Admin)"
         },
-        // Descriptions for subject lookup
         descriptions: {
             "Matematika": "Sonlar, miqdorlar va geometrik shakllar haqidagi fan. Mantiqiy fikrlashni rivojlantiradi.",
             "Rus tili": "Rus tilining grammatikasi, imlosi va nutq madaniyatini o'rganish.",
@@ -241,22 +253,125 @@ const TRANSLATIONS = {
     }
 };
 
-// --- HELPER FUNCTIONS ---
-
 const getLessonInfo = (subjectName, lang) => {
-    // Find description based on exact match or fallback
     const t = TRANSLATIONS[lang];
     const desc = t.descriptions[subjectName] || t.school.modal.default_desc;
-    
-    // Simulate generic room/teacher data since we don't have a real DB
     return {
-        description: desc,
-        teacher: "Noma'lum O'qituvchi", // Default
-        room: "Kabinet 6-D" // Default
+        description: desc
     };
 };
 
+// --- STATS LOGIC ---
+const NAMESPACE = "uzbproject_school169_v1";
+
+const getTodayKey = () => {
+    // Returns date string like "2023-11-28" in Uzbekistan timezone
+    return new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Tashkent' });
+}
+
+const getYesterdayKey = () => {
+    const date = new Date();
+    date.setDate(date.getDate() - 1);
+    return date.toLocaleDateString('en-CA', { timeZone: 'Asia/Tashkent' });
+}
+
 // --- COMPONENTS ---
+
+function StatsModal({ isOpen, onClose }) {
+    if (!isOpen) return null;
+    const [stats, setStats] = useState({ total: 0, today: 0, yesterday: 0 });
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchStats = async () => {
+            try {
+                // Fetch Total
+                const totalReq = await fetch(`https://api.counterapi.dev/v1/${NAMESPACE}/visits_total`);
+                const totalData = await totalReq.json();
+                
+                // Fetch Today
+                const todayKey = `visits_${getTodayKey()}`;
+                const todayReq = await fetch(`https://api.counterapi.dev/v1/${NAMESPACE}/${todayKey}`);
+                const todayData = await todayReq.json();
+                
+                // Fetch Yesterday
+                const yestKey = `visits_${getYesterdayKey()}`;
+                const yestReq = await fetch(`https://api.counterapi.dev/v1/${NAMESPACE}/${yestKey}`);
+                const yestData = await yestReq.json();
+
+                setStats({
+                    total: totalData.count || 0,
+                    today: todayData.count || 0,
+                    yesterday: yestData.count || 0
+                });
+            } catch (e) {
+                console.error("Stats fetch error:", e);
+                // If keys don't exist yet, they might 404, default to 0
+                setStats({ total: 0, today: 0, yesterday: 0 });
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchStats();
+    }, []);
+
+    const handleBackdropClick = (e) => {
+        if (e.target === e.currentTarget) onClose();
+    };
+
+    return (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 animate-enter" onClick={handleBackdropClick}>
+            <div className="bg-white dark:bg-slate-900 w-full max-w-sm rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden animate-pop relative">
+                <div className="p-6 bg-gradient-to-r from-blue-600 to-indigo-600 flex items-center justify-between">
+                     <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                        <Icons.BarChart size={24}/> Admin Stats
+                     </h3>
+                     <button onClick={onClose} className="p-2 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors">
+                        <Icons.X size={18} />
+                    </button>
+                </div>
+                
+                <div className="p-6 space-y-6">
+                    {loading ? (
+                        <div className="flex justify-center py-8">
+                             <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                        </div>
+                    ) : (
+                        <div className="space-y-4">
+                            <div className="p-4 bg-slate-50 dark:bg-slate-800 rounded-2xl flex justify-between items-center border border-slate-100 dark:border-slate-700">
+                                <div>
+                                    <p className="text-xs text-slate-500 uppercase font-bold">Total Visits</p>
+                                    <p className="text-2xl font-black text-slate-800 dark:text-white">{stats.total}</p>
+                                </div>
+                                <div className="p-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 rounded-xl">
+                                    <Icons.Globe size={20}/>
+                                </div>
+                            </div>
+                             <div className="p-4 bg-green-50 dark:bg-green-900/10 rounded-2xl flex justify-between items-center border border-green-100 dark:border-green-900/30">
+                                <div>
+                                    <p className="text-xs text-green-600 uppercase font-bold">Today</p>
+                                    <p className="text-2xl font-black text-green-700 dark:text-green-400">{stats.today}</p>
+                                </div>
+                                <div className="p-2 bg-green-200 dark:bg-green-800/40 text-green-700 rounded-xl">
+                                    <Icons.Sun size={20}/>
+                                </div>
+                            </div>
+                             <div className="p-4 bg-orange-50 dark:bg-orange-900/10 rounded-2xl flex justify-between items-center border border-orange-100 dark:border-orange-900/30">
+                                <div>
+                                    <p className="text-xs text-orange-600 uppercase font-bold">Yesterday</p>
+                                    <p className="text-2xl font-black text-orange-700 dark:text-orange-400">{stats.yesterday}</p>
+                                </div>
+                                <div className="p-2 bg-orange-200 dark:bg-orange-800/40 text-orange-700 rounded-xl">
+                                    <Icons.History size={20}/>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            </div>
+        </div>
+    );
+}
 
 function HeroSection({ t, setActiveTab }) {
     return (
@@ -272,11 +387,11 @@ function HeroSection({ t, setActiveTab }) {
                 
                 <h1 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.9]">
                     <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-green-600 dark:from-blue-400 dark:via-indigo-400 dark:to-green-400">
-                        UZBEKISTAN
+                        {t.hero.main_title}
                     </span>
                     <br />
                     <span className="text-slate-900 dark:text-white text-3xl md:text-5xl font-bold mt-2 block">
-                        & SCHOOL 169
+                        {t.hero.sub_title}
                     </span>
                 </h1>
                 
@@ -305,7 +420,6 @@ function LessonModal({ isOpen, onClose, data, t, lang }) {
     const details = getLessonInfo(data.name, lang);
     const Icon = data.icon;
     
-    // Close on click outside
     const handleBackdropClick = (e) => {
         if (e.target === e.currentTarget) onClose();
     };
@@ -313,25 +427,22 @@ function LessonModal({ isOpen, onClose, data, t, lang }) {
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 animate-enter" onClick={handleBackdropClick}>
             <div className="bg-white dark:bg-slate-900 w-full max-w-md rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden animate-pop relative">
-                {/* Header */}
                 <div className={`p-6 ${data.color.split(' ')[1]} flex items-start justify-between`}>
                     <div className="flex items-center gap-4">
-                        <div className={`p-3 bg-white/20 backdrop-blur-md rounded-xl text-slate-900 dark:text-white`}>
+                        <div className={`p-3 bg-white/20 backdrop-blur-md rounded-xl text-slate-900`}>
                             <Icon size={32} />
                         </div>
                         <div>
-                            <h3 className="text-2xl font-bold text-slate-900 dark:text-white">{data.name}</h3>
-                            <span className="text-sm font-mono opacity-70 dark:text-slate-200">{t.school.subject_label} #{data.index + 1}</span>
+                            <h3 className="text-2xl font-bold text-slate-900">{data.name}</h3>
+                            <span className="text-sm font-mono opacity-70 text-slate-700">{t.school.subject_label} #{data.index + 1}</span>
                         </div>
                     </div>
-                    <button onClick={onClose} className="p-2 hover:bg-black/10 rounded-full transition-colors">
+                    <button onClick={onClose} className="p-2 hover:bg-black/10 rounded-full transition-colors text-slate-900">
                         <Icons.X size={20} />
                     </button>
                 </div>
                 
-                {/* Body */}
                 <div className="p-6 space-y-6">
-                    {/* Time */}
                     <div className="flex items-center gap-4 p-4 bg-slate-50 dark:bg-slate-800 rounded-2xl">
                         <div className="p-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 rounded-lg">
                             <Icons.Clock size={20} />
@@ -344,7 +455,6 @@ function LessonModal({ isOpen, onClose, data, t, lang }) {
                         </div>
                     </div>
                     
-                    {/* Description */}
                     <div>
                         <h4 className="font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
                             <Icons.BookOpen size={16} className="text-blue-500"/> {t.school.modal.about_label}
@@ -352,18 +462,6 @@ function LessonModal({ isOpen, onClose, data, t, lang }) {
                         <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
                             {details.description}
                         </p>
-                    </div>
-
-                    {/* Meta info (Teacher/Room) - Generic placeholders */}
-                    <div className="grid grid-cols-2 gap-4">
-                        <div className="p-3 border border-slate-100 dark:border-slate-800 rounded-xl">
-                            <span className="text-xs text-slate-400 block mb-1">{t.school.modal.teacher_label}</span>
-                            <span className="font-medium text-slate-700 dark:text-slate-300">Ustoz (6-D)</span>
-                        </div>
-                        <div className="p-3 border border-slate-100 dark:border-slate-800 rounded-xl">
-                            <span className="text-xs text-slate-400 block mb-1">{t.school.modal.room_label}</span>
-                            <span className="font-medium text-slate-700 dark:text-slate-300">Maktab 169</span>
-                        </div>
                     </div>
 
                     <button onClick={onClose} className="w-full py-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold rounded-xl transition-colors">
@@ -377,6 +475,11 @@ function LessonModal({ isOpen, onClose, data, t, lang }) {
 
 function SchoolSection({ t, currentDay, setCurrentDay, isUz, lang }) {
     const [selectedLesson, setSelectedLesson] = useState(null);
+    
+    useEffect(() => {
+        setSelectedLesson(null);
+    }, [lang, currentDay]);
+
     const daySchedule = SCHEDULE_DATA[currentDay] || {};
     const lessons = isUz ? (daySchedule.uz || []) : (daySchedule.ru || []);
     const icons = daySchedule.icons || [];
@@ -384,7 +487,6 @@ function SchoolSection({ t, currentDay, setCurrentDay, isUz, lang }) {
 
     return (
         <div className="max-w-5xl mx-auto p-4 md:p-8 animate-enter">
-            {/* Modal Injection */}
             <LessonModal 
                 isOpen={!!selectedLesson} 
                 onClose={() => setSelectedLesson(null)} 
@@ -549,21 +651,21 @@ function InfoSection({ t }) {
                      <div className="p-6 rounded-2xl bg-yellow-50 dark:bg-yellow-900/10 border border-yellow-100 dark:border-yellow-800/30 flex gap-4">
                         <div className="p-3 bg-yellow-200 dark:bg-yellow-800/40 rounded-xl h-fit text-yellow-700 dark:text-yellow-400"><Icons.Database size={24}/></div>
                         <div>
-                            <h3 className="font-bold text-lg mb-1 text-slate-900 dark:text-white">Gold & Resources</h3>
+                            <h3 className="font-bold text-lg mb-1 text-slate-900 dark:text-white">{t.info.header_gold}</h3>
                             <p className="text-sm opacity-80 text-slate-600 dark:text-slate-400">{t.info.text_gold}</p>
                         </div>
                      </div>
                      <div className="p-6 rounded-2xl bg-indigo-50 dark:bg-indigo-900/10 border border-indigo-100 dark:border-indigo-800/30 flex gap-4">
                         <div className="p-3 bg-indigo-200 dark:bg-indigo-800/40 rounded-xl h-fit text-indigo-700 dark:text-indigo-400"><Icons.Layers size={24}/></div>
                         <div>
-                            <h3 className="font-bold text-lg mb-1 text-slate-900 dark:text-white">Cotton & Textiles</h3>
+                            <h3 className="font-bold text-lg mb-1 text-slate-900 dark:text-white">{t.info.header_cotton}</h3>
                             <p className="text-sm opacity-80 text-slate-600 dark:text-slate-400">{t.info.text_cotton}</p>
                         </div>
                      </div>
                      <div className="p-6 rounded-2xl bg-rose-50 dark:bg-rose-900/10 border border-rose-100 dark:border-rose-800/30 flex gap-4">
                         <div className="p-3 bg-rose-200 dark:bg-rose-800/40 rounded-xl h-fit text-rose-700 dark:text-rose-400"><Icons.Zap size={24}/></div>
                         <div>
-                            <h3 className="font-bold text-lg mb-1 text-slate-900 dark:text-white">Culture & Food</h3>
+                            <h3 className="font-bold text-lg mb-1 text-slate-900 dark:text-white">{t.info.header_food}</h3>
                             <p className="text-sm opacity-80 text-slate-600 dark:text-slate-400">{t.info.text_food}</p>
                         </div>
                      </div>
@@ -571,11 +673,11 @@ function InfoSection({ t }) {
 
                 <div className="glass-card rounded-3xl p-8">
                     <h3 className="text-xl font-bold mb-6 flex items-center gap-2 text-slate-900 dark:text-white">
-                        <Icons.AlertTriangle className="text-blue-500"/> Pros & Cons
+                        <Icons.AlertTriangle className="text-blue-500"/> {t.info.header_pc}
                     </h3>
                     <div className="space-y-6">
                         <div>
-                            <span className="text-xs font-bold text-green-500 uppercase tracking-wider mb-2 block">Pros</span>
+                            <span className="text-xs font-bold text-green-500 uppercase tracking-wider mb-2 block">{t.info.label_pros}</span>
                             <div className="space-y-2">
                                 {t.info.pros.map((p, i) => (
                                     <div key={i} className="flex items-center gap-3 p-3 rounded-lg bg-green-50 dark:bg-green-900/20">
@@ -586,7 +688,7 @@ function InfoSection({ t }) {
                             </div>
                         </div>
                         <div>
-                            <span className="text-xs font-bold text-red-500 uppercase tracking-wider mb-2 block">Cons</span>
+                            <span className="text-xs font-bold text-red-500 uppercase tracking-wider mb-2 block">{t.info.label_cons}</span>
                             <div className="space-y-2">
                                 {t.info.cons.map((c, i) => (
                                     <div key={i} className="flex items-center gap-3 p-3 rounded-lg bg-red-50 dark:bg-red-900/20">
@@ -606,13 +708,13 @@ function InfoSection({ t }) {
 // --- MAIN APP ---
 
 function App() {
-    // Initialize from LocalStorage or Default
     const [lang, setLang] = useState(() => localStorage.getItem('portal_lang') || 'ru');
     const [darkMode, setDarkMode] = useState(() => localStorage.getItem('portal_theme') === 'dark');
     const [activeTab, setActiveTab] = useState('home');
+    const [adminModalOpen, setAdminModalOpen] = useState(false);
+    
     const mainRef = useRef(null);
     
-    // Logic: Monday(1) to Saturday(6). If Sunday(0), default to Monday(1).
     const [currentDay, setCurrentDay] = useState(() => {
         const day = new Date().getDay();
         return day === 0 ? 1 : day;
@@ -621,7 +723,32 @@ function App() {
     const t = TRANSLATIONS[lang];
     const isUz = lang === 'uz';
 
-    // Effect: Handle Theme and LocalStorage
+    // REMOVE LOADER
+    useEffect(() => {
+        const loader = document.getElementById('loader');
+        if(loader) {
+            loader.style.opacity = '0';
+            setTimeout(() => loader.remove(), 500);
+        }
+    }, []);
+
+    // COUNT VISITS (ONCE PER LOAD)
+    useEffect(() => {
+        const countVisit = async () => {
+            try {
+                // Increment Total
+                await fetch(`https://api.counterapi.dev/v1/${NAMESPACE}/visits_total/up`);
+                // Increment Today
+                const todayKey = `visits_${getTodayKey()}`;
+                await fetch(`https://api.counterapi.dev/v1/${NAMESPACE}/${todayKey}/up`);
+            } catch (e) {
+                console.error("Counter API failed", e);
+            }
+        };
+        // Simple duplicate check could go here, but per request we count "entries"
+        countVisit();
+    }, []);
+
     useEffect(() => {
         if (darkMode) {
             document.documentElement.classList.add('dark');
@@ -632,33 +759,30 @@ function App() {
         }
     }, [darkMode]);
 
-    // Effect: Save Language
     useEffect(() => {
         localStorage.setItem('portal_lang', lang);
     }, [lang]);
 
-    // Effect: Scroll to top on tab change
     useEffect(() => {
-        if (mainRef.current) {
-            mainRef.current.scrollTo(0, 0);
-        }
-        // Also scroll window for mobile
+        if (mainRef.current) mainRef.current.scrollTo(0, 0);
         window.scrollTo(0, 0);
     }, [activeTab]);
 
-    // Hide loader when mounted
-    useEffect(() => {
-        const loader = document.getElementById('loader');
-        if(loader) {
-            loader.style.opacity = '0';
-            setTimeout(() => loader.remove(), 500);
-        }
-    }, []);
-
     const toggleLang = () => setLang(l => l === 'ru' ? 'uz' : 'ru');
+
+    const handleAdminClick = () => {
+        const pass = prompt("Enter Admin Password:");
+        if (pass === "muso12g") {
+            setAdminModalOpen(true);
+        } else if (pass !== null) {
+            alert("Wrong password!");
+        }
+    };
 
     return (
         <div className="min-h-screen flex flex-col md:flex-row">
+            <StatsModal isOpen={adminModalOpen} onClose={() => setAdminModalOpen(false)} />
+
             {/* SIDEBAR NAVIGATION */}
             <aside className="w-full md:w-20 lg:w-72 bg-white dark:bg-slate-950 border-r border-slate-200 dark:border-slate-800 flex md:flex-col items-center justify-between p-4 fixed bottom-0 md:relative z-50 md:h-screen shadow-[0_-4px_20px_rgba(0,0,0,0.1)] md:shadow-none pb-safe">
                  <div className="hidden md:flex flex-col items-center lg:items-start w-full mb-8">
@@ -703,21 +827,25 @@ function App() {
                              <span>{t.settings.theme}</span>
                              {darkMode ? <Icons.Moon size={16}/> : <Icons.Sun size={16}/>}
                          </button>
+
+                         {/* ADMIN BUTTON */}
+                         <button onClick={handleAdminClick} className="flex justify-between items-center text-sm font-medium text-slate-400 hover:text-red-500 transition-colors pt-2 border-t border-slate-200 dark:border-slate-800 mt-2">
+                            <span>{t.settings.admin_btn}</span>
+                            <Icons.Lock size={14} />
+                         </button>
                      </div>
-                     <div className="text-[10px] text-slate-300 dark:text-slate-600 text-center">
-                         {t.settings.credit}
+                     <div className="text-[10px] text-slate-300 dark:text-slate-600 text-center font-mono">
+                         {t.common.made_by}
                      </div>
                  </div>
             </aside>
 
             {/* MAIN CONTENT AREA */}
-            <main ref={mainRef} className="flex-1 pb-24 md:pb-0 h-screen md:overflow-y-auto relative scroll-smooth">
-                {/* Background Decor */}
+            <main ref={mainRef} className="flex-1 pb-24 md:pb-0 h-screen md:overflow-y-auto relative scroll-smooth flex flex-col">
                 <div className="fixed top-0 left-0 w-full h-full pointer-events-none opacity-40 z-[-1]" style={{
                     background: `radial-gradient(circle at 50% 50%, ${darkMode ? '#1e293b' : '#e2e8f0'} 0%, transparent 50%)`
                 }}></div>
                 
-                {/* Mobile Header */}
                 <div className="lg:hidden flex justify-between items-center p-4 sticky top-0 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-100 dark:border-slate-800">
                      <div className="font-bold text-lg flex items-center gap-2 text-slate-900 dark:text-white">
                          <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white text-xs">UZ</div>
@@ -731,13 +859,21 @@ function App() {
                      </div>
                 </div>
 
-                <div className="min-h-full">
+                <div className="flex-1">
                     {activeTab === 'home' && <HeroSection t={t} setActiveTab={setActiveTab} />}
-                    {/* Pass lang to SchoolSection so the modal knows which language to pick */}
                     {activeTab === 'school' && <SchoolSection t={t} currentDay={currentDay} setCurrentDay={setCurrentDay} isUz={isUz} lang={lang} />}
                     {activeTab === 'history' && <HistorySection t={t} />}
                     {activeTab === 'info' && <InfoSection t={t} />}
                 </div>
+
+                <footer className="py-8 mt-auto flex justify-center items-center opacity-60 hover:opacity-100 transition-opacity">
+                    <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800">
+                        <Icons.Cpu size={14} className="text-blue-500" />
+                        <span className="text-xs font-bold text-slate-500 dark:text-slate-400 font-mono tracking-wide">
+                            {t.common.made_by}
+                        </span>
+                    </div>
+                </footer>
             </main>
         </div>
     );
